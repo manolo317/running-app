@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+  db:
+    image: mysql:5.7
+    container_name: running_app
+    volumes:
+      # mysql configuration
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: running_app
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_USER: manu
+      TZ: "Europe/Paris"
